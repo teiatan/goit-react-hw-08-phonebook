@@ -10,7 +10,6 @@ export const Label = styled.label`
     align-items: center;
     margin-left: 18px;
     font-weight: 700;
-
 `;
 
 export const Input = styled.input`

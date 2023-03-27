@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-
 const initialContacts = {
     contacts: [
         {name: 'Rosie Simpson', number: '459-12-56'},
@@ -10,7 +9,7 @@ const initialContacts = {
         {name: 'Eden Clements', number: '645-17-79'},
         {name: 'Annie Copeland', number: '227-91-26'},
     ],
-  };
+};
 
 const contacts = createSlice({
     name: 'contacts',
