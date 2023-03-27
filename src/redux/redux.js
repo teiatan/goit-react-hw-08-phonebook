@@ -1,9 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createAction, createReducer, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const getFilter = createAction('filter/getFilter');
-
-const contactsSlice = createSlice({
+const contacts = createSlice({
     name: 'contacts',
     initialState: [
         {name: 'Rosie Simpson', number: '459-12-56'},
@@ -16,19 +14,26 @@ const contactsSlice = createSlice({
             return [...state, {name: action.payload.name, number: action.payload.number}]
         },
         deleteContact(state, action) {
-            return state.filter(contact => contact.name !== action.payload)
+            return state.filter(contact => contact.name !== action.payload);
         },
     },
 });
 
-
-export const { addContact, deleteContact } = contactsSlice.actions;
-
-const filterReducer = createReducer("", {
-    [getFilter]: (state, action) => action.payload,
+const filter = createSlice({
+    name: 'filter',
+    initialState: "",
+    reducers: {
+        getFilter(state, action) {
+            return action.payload;
+        }
+    }
 })
 
+
+export const { addContact, deleteContact } = contacts.actions;
+export const { getFilter } = filter.actions;
+
 export const store = configureStore({ reducer: {
-    contacts: contactsSlice.reducer,
-    filter: filterReducer,
+    contacts: contacts.reducer,
+    filter: filter.reducer,
 } });
