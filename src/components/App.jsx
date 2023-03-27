@@ -1,21 +1,29 @@
 import { useSelector, useDispatch } from "react-redux";
+import { Section } from "./Section/section";
+import { ContactForm } from "./ContactForm/ContactForm";
+import { Filter } from "./Filter/Filter";
+import { ContactList } from "./ContactList/ContactList";
+import { Container } from "./App.styled";
 
 export const App = () => {
-  const Value = useSelector(state => state.myValue);
-  console.log(Value)
+  const contacts = useSelector(state => state.contacts);
+  console.log(contacts)
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Section title="Phonebook">
+        <ContactForm /* takeDataFromSubmitForm={takeDataFromSubmitForm} *//>
+      </Section>
+
+      <Section title="Contacts">
+        <Container>
+          {/* <Filter getFilterRequest={getFilterRequest}/> */}
+          <ContactList
+            contacts={contacts} 
+            /* deleteContact={deleteContact} */>
+          </ContactList>
+        </Container>
+      </Section>
+    </>
   );
 };
