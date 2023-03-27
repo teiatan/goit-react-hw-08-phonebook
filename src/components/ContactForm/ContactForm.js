@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Notify } from "notiflix";
-import { addContact } from "redux/reducers";
+import { addContact } from "redux/slice";
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
 export function ContactForm() {
@@ -10,7 +10,7 @@ export function ContactForm() {
     const [number, setNumber] = useState("");
 
     const dispatch = useDispatch();
-    const contacts = useSelector(state => state.contacts)
+    const contacts = useSelector(state => state.contacts.contacts)
 
     const handleInputChange = e => {
         const { name, value } = e.currentTarget;

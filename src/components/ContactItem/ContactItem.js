@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/reducers';
+import { deleteContact } from 'redux/slice';
 import { Item, Button, Span } from './ContactItem.styled';
 
 export function ContactItem({name, number}) {
