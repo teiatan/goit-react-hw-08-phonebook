@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Notify } from "notiflix";
-import { addContact } from "redux/redux";
+import { addContact } from "redux/reducers";
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
 export function ContactForm() {
