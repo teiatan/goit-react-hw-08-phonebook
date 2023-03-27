@@ -20,7 +20,7 @@ const contactsReducer = createReducer([
   });
 
   const filterReducer = createReducer("", {
-    [getFilter]: (state, action) => state,
+    [getFilter]: (state, action) => action.payload,
 
   })
 
