@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Form, Label, Input, Button } from './ContactForm.styled';
-//import { addContact } from "redux/store";
-//import { useDispatch } from "react-redux";
+import { addContact } from "redux/store";
+import { useDispatch } from "react-redux";
 
 export function ContactForm({takeDataFromSubmitForm}) {
 
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
+
+    const dispatch = useDispatch();
 
     const handleInputChange = e => {
         const { name, value } = e.currentTarget;
@@ -25,7 +27,7 @@ export function ContactForm({takeDataFromSubmitForm}) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        takeDataFromSubmitForm(name, number);
+        dispatch(addContact({name, number}));
         resetForm();
     };
 
