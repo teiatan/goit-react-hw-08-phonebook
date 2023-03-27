@@ -1,18 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Section } from "./Section/section";
 import { ContactForm } from "./ContactForm/ContactForm";
-import { Filter } from "./Filter/Filter";
+//import { Filter } from "./Filter/Filter";
 import { ContactList } from "./ContactList/ContactList";
 import { Container } from "./App.styled";
+import { addContact } from "redux/store";
 
 export const App = () => {
   const contacts = useSelector(state => state.contacts);
-  console.log(contacts)
+  const dispatch = useDispatch();
 
   return (
     <>
       <Section title="Phonebook">
-        <ContactForm /* takeDataFromSubmitForm={takeDataFromSubmitForm} *//>
+        <ContactForm takeDataFromSubmitForm={dispatch(addContact)}/>
       </Section>
 
       <Section title="Contacts">

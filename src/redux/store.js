@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { createAction, createReducer } from '@reduxjs/toolkit';
 //import rootReducer from './reducers';
-const addContact = createAction('contacts/addContact');
-const deleteContact = createAction('contacts/deleteContact');
-const filter = createAction('contacts/filter');
+export const addContact = createAction('contacts/addContact');
+export const deleteContact = createAction('contacts/deleteContact');
+export const filter = createAction('contacts/filter');
 
 const getFilter = createAction('filter/getFilter');
 
