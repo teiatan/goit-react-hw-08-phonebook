@@ -4,8 +4,12 @@ import { getFilter } from 'redux/store';
 
 export function Filter () {
 
-    const value = useSelector(state => state.filter);
+    const filter = useSelector(state => state.filter);
     const dispatch = useDispatch();
+
+    const onChange = e => {
+        dispatch(getFilter(e.currentTarget.value));
+    }
 
     return (
         <Label>
@@ -13,8 +17,8 @@ export function Filter () {
             <Input
                 type="text"
                 name="filter"
-                value={value}
-                onChange={e=>dispatch(getFilter(e.currentTarget.value))}
+                value={filter}
+                onChange={onChange}
             />
         </Label>
     );
