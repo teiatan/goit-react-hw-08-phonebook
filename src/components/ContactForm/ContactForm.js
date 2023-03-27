@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { Form, Label, Input, Button } from './ContactForm.styled';
 import { addContact } from "redux/store";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Notify } from "notiflix";
 
-export function ContactForm({takeDataFromSubmitForm}) {
+export function ContactForm() {
 
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
 
     const dispatch = useDispatch();
+    const contacts = useSelector(state => state.contacts)
 
     const handleInputChange = e => {
         const { name, value } = e.currentTarget;
-
         switch (name) {
             case "name":
                 setName(value);
@@ -27,8 +28,18 @@ export function ContactForm({takeDataFromSubmitForm}) {
 
     const handleSubmit = e => {
         e.preventDefault();
+        const existingContact = contacts.find((element) =>
+            element.name === name
+        );
+
+        if(existingContact) {
+        window.alert(`${name} is already in contacts`);
+        return;
+        }; 
+    
         dispatch(addContact({name, number}));
         resetForm();
+        Notify.success(`${name} is successfully added to your contact list`);
     };
 
     const resetForm = () => {
