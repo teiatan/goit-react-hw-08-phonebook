@@ -14,7 +14,7 @@ const contactsReducer = createReducer([
     {name: 'Annie Copeland', number: '227-91-26'},
   ], {
     [addContact]: (state, action) => state,
-    [deleteContact]: (state, action) => state,
+    [deleteContact]: (state, action) => state.filter(contact => contact.name !== action.payload),
     [filter]: (state, action) => state,
 
   });

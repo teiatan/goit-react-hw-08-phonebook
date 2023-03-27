@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from "react";
 import { Form, Label, Input, Button } from './ContactForm.styled';
-import { addContact } from "redux/store";
+//import { addContact } from "redux/store";
 
 export function ContactForm({takeDataFromSubmitForm}) {
 
@@ -65,8 +65,4 @@ export function ContactForm({takeDataFromSubmitForm}) {
             <Button type="submit">Add contact</Button>
         </Form>
     );  
-};
-
-ContactForm.propTypes = {
-    takeDataFromSubmitForm: PropTypes.func,
 };
