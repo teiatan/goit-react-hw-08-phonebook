@@ -1,6 +1,6 @@
+import { useSelector } from 'react-redux';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { ContactListEl } from './ContactList.styled';
-import { useSelector } from 'react-redux';
 
 export function ContactList() {
 

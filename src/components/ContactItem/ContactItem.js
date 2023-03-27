@@ -1,14 +1,21 @@
 import PropTypes from 'prop-types';
-import { Item, Button, Span } from './ContactItem.styled';
+import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/store';
+import { deleteContact } from 'redux/redux';
+import { Item, Button, Span } from './ContactItem.styled';
 
 export function ContactItem({name, number}) {
+   
     const dispatch = useDispatch();
+
+    const onClick = () => {
+        dispatch(deleteContact(name));
+        Notify.failure(`${name} is deleted from your contact list`);
+    };
 
     return (
         <Item>{name}: <Span>{number}</Span>
-            <Button type='button' onClick={() => {dispatch(deleteContact(name))}}>Delete</Button>
+            <Button type='button' onClick={onClick}>Delete</Button>
         </Item>
     );
 };
