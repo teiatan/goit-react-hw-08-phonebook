@@ -5,7 +5,7 @@ export const addContact = createAction('contacts/addContact');
 export const deleteContact = createAction('contacts/deleteContact');
 export const filter = createAction('contacts/filter');
 
-const getFilter = createAction('filter/getFilter');
+export const getFilter = createAction('filter/getFilter');
 
 const contactsReducer = createReducer([
     {name: 'Rosie Simpson', number: '459-12-56'},

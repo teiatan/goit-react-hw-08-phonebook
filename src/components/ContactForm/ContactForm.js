@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import { useState } from "react";
 import { Form, Label, Input, Button } from './ContactForm.styled';
 //import { addContact } from "redux/store";
+//import { useDispatch } from "react-redux";
 
 export function ContactForm({takeDataFromSubmitForm}) {
 
