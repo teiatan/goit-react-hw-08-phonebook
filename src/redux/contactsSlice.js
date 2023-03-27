@@ -9,7 +9,6 @@ const initialContacts = {
     ],
   };
 
-
 export const contacts = createSlice({
     name: 'contacts',
     initialState: initialContacts,
@@ -24,14 +23,3 @@ export const contacts = createSlice({
     },
 });
 export const { addContact, deleteContact } = contacts.actions;
-
-export const filter = createSlice({
-    name: 'filter',
-    initialState: "",
-    reducers: {
-        getFilter(state, action) {
-            return action.payload;
-        }
-    }
-});
-export const { getFilter } = filter.actions;
