@@ -1,4 +1,9 @@
+import { useSelector, useDispatch } from "react-redux";
+
 export const App = () => {
+  const Value = useSelector(state => state.myValue);
+  console.log(Value)
+
   return (
     <div
       style={{
