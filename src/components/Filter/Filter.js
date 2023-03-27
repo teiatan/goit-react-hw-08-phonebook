@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { Label, Input } from "./Filter.styled";
 
-export function Filter ({getFilterRequest}) {
+export function Filter () {
 
     const [value, setValue] = useState("");
 
-    useEffect(()=>{
+    /* useEffect(()=>{
         getFilterRequest(value);
-    }, [value, getFilterRequest]);
+    }, [value, getFilterRequest]); */
 
     const onChange = e => {
         setValue(e.currentTarget.value);
@@ -25,8 +25,4 @@ export function Filter ({getFilterRequest}) {
             />
         </Label>
     );
-};
-
-Filter.propTypes = { 
-    getFilterRequest: PropTypes.func,
 };
