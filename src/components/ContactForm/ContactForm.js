@@ -10,7 +10,7 @@ export function ContactForm() {
     const [number, setNumber] = useState("");
 
     const dispatch = useDispatch();
-    const contacts = useSelector(state => state.contacts.contacts)
+    const contacts = useSelector(state => state.contacts.items)
 
     const handleInputChange = e => {
         const { name, value } = e.currentTarget;

@@ -3,8 +3,12 @@ import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from "./Filter/Filter";
 import { ContactList } from "./ContactList/ContactList";
 import { Container } from "./App.styled";
+//import { useSelector } from 'react-redux';
 
 export const App = () => {
+
+/*   const contacts = useSelector(state => state.contacts);
+  console.log(contacts); */
 
   return (
     <>

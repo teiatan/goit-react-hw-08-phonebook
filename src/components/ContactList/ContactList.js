@@ -4,7 +4,7 @@ import { ContactListEl } from './ContactList.styled';
 
 export function ContactList() {
 
-    const contacts = useSelector(state => state.contacts.contacts);
+    const contacts = useSelector(state => state.contacts.items);
     const filter = useSelector(state => state.filter);
     const visibleContacts = contacts.filter(element => element.name.toLowerCase().includes(filter));
 
