@@ -1,2 +1,2 @@
-export * as contactsSelectors from './contactsSelectors';
-export * as contactsOperations from './contactsOperations';
+export * as contactsSelectors from '../selectors';
+export * as contactsOperations from '../operations';

@@ -2,32 +2,31 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { ContactListEl } from './ContactList.styled';
 import { useEffect } from 'react';
-import { contactsSelectors, contactsOperations } from 'redux/contacts';
-//import * as contactsSelectors from '../../redux/contacts/contactsSelectors';
-//import * as contactsOperations from '../../redux/contacts/contactsOperations';
+import { contactsSelector, filterSelector } from 'redux/selectors';
+import { fetchContacts } from 'redux/operations';
 
 export function ContactList() {
 
-    const contacts = useSelector(contactsSelectors.contacts);
-    const filter = useSelector(state => state.filter);
-    const visibleContacts = contacts.filter(element => element.name.toLowerCase().includes(filter));
     const dispatch = useDispatch();
- 
+    const contacts = useSelector(contactsSelector);
+    const filter = useSelector(filterSelector);
+    const visibleContacts = contacts.filter(element => element.name.toLowerCase().includes(filter));
+
     useEffect(()=> {
-        dispatch(contactsOperations.fetchContacts());
+        dispatch(fetchContacts());
     }, [dispatch]);
 
     return (
         <ContactListEl>
             {visibleContacts.map((contact) => {
-                    return (
-                        <ContactItem 
-                            key={contact.name}
-                            name={contact.name}
-                            number={contact.number}
-                        />
-                    );
-                })}                
+                return (
+                    <ContactItem 
+                        key={contact.name}
+                        name={contact.name}
+                        number={contact.number}
+                    />
+                );
+            })}                
         </ContactListEl>
     );
 };

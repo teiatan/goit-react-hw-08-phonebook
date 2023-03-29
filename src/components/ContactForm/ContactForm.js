@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Notify } from "notiflix";
-import { addContact } from "redux/contactsSlice";
+//import { addContact } from "redux/contactsSlice";
+import { addContact } from "redux/operations";
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
 export function ContactForm() {
@@ -36,7 +37,7 @@ export function ContactForm() {
         window.alert(`${name} is already in contacts`);
         return;
         }; 
-    
+        console.log(name, number);
         dispatch(addContact({name, number}));
         resetForm();
         Notify.success(`${name} is successfully added to your contact list`);

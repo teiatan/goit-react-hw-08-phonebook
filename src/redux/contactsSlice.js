@@ -1,6 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts } from "./contacts/contactsOperations";
-//import { fetchContacts, addContact, deleteContact } from './operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
+
+const onPending = state => {
+    state.isLoading = true;
+    state.error = null;
+};
+
+const onFulfilled = state => {
+    state.isLoading = false;
+    state.error = null;
+};
+
+const onRejected = (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+};
 
 export const contacts = createSlice({
     name: 'contacts',
@@ -11,36 +25,29 @@ export const contacts = createSlice({
     },
     extraReducers: {
 
-        [fetchContacts.pending]: (state) => {
-            state.isLoading = true;
-            state.error = null;
-        },
-
+        [fetchContacts.pending]: onPending,
         [fetchContacts.fulfilled]: (state, action) => {
             state.items = action.payload;
-            state.isLoading = false;
-            state.error = null;
+            onFulfilled(state);
         },
-        
-        
-        [fetchContacts.rejected]: (state, action) => {
-            state.isLoading = false;
-            state.error = action.payload;
+        [fetchContacts.rejected]: onRejected,
+
+
+        [addContact.pending]: onPending,
+        [addContact.fulfilled]: (state, action) => {
+            //state.items.unshift(action.payload);
+            onFulfilled(state);
         },
-        /*
+        [addContact.rejected]: onRejected,
 
-
-
-
-        addContact(state, action) {
-            state.items.push(action.payload);
-        },
-        deleteContact(state, action) {
+        [deleteContact.pending]: onPending,
+        [deleteContact.fulfilled]: (state, action) => {
             state.items.filter(contact => contact.name !== action.payload);
-        }, */
+            onFulfilled(state);
+        },
+        [deleteContact.rejected]: onRejected,
     },
 });
 
-export const { fetchingInProgress, fetchingSuccess, fetchingError } = contacts.actions;
-export const { addContact, deleteContact } = contacts.actions;
+//export const { addContact, deleteContact } = contacts.actions;
 export const contactsReducer = contacts.reducer;

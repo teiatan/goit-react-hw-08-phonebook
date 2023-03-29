@@ -9,7 +9,7 @@ export function ContactItem({name, number}) {
     const dispatch = useDispatch();
 
     const onClick = () => {
-        dispatch(deleteContact(name));
+        //dispatch(deleteContact(name));
         Notify.failure(`${name} is deleted from your contact list`);
     };
 
