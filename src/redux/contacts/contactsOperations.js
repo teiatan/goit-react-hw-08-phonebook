@@ -1,7 +1,8 @@
 import * as contactsActions from './contactsActions';
 import * as contactsApi from '../../service/mockapi';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchContacts = () => async dispatch => {
+/* export const fetchContacts = () => async dispatch => {
     dispatch(contactsActions.fetchContactsRequest());
     try {
         const contacts = await contactsApi.fetchContacts();
@@ -10,6 +11,12 @@ export const fetchContacts = () => async dispatch => {
     } catch (error) {
         dispatch(contactsActions.fetchContactsError(error));
     }
-};
+}; */
 
-//export const addContact = () => async dispatch
+export const fetchContacts = createAsyncThunk(
+    'contacts/fetchContacts',
+    async () => {
+        const contacts = await contactsApi.fetchContacts();
+        return contacts; 
+    }
+)
