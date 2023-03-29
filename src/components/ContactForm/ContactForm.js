@@ -36,8 +36,7 @@ export function ContactForm() {
         if(existingContact) {
         window.alert(`${name} is already in contacts`);
         return;
-        }; 
-        console.log(name, number);
+        };
         dispatch(addContact({name, number}));
         resetForm();
         Notify.success(`${name} is successfully added to your contact list`);

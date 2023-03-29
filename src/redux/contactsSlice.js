@@ -35,7 +35,7 @@ export const contacts = createSlice({
 
         [addContact.pending]: onPending,
         [addContact.fulfilled]: (state, action) => {
-            //state.items.unshift(action.payload);
+            state.items.push(action.payload);
             onFulfilled(state);
         },
         [addContact.rejected]: onRejected,

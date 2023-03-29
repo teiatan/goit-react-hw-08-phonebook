@@ -27,9 +27,9 @@ export const addContact = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
     'contacts/addContact',
-    async () => {
+    async (data) => {
         try {
-           await contactsApi.deleteContact();
+           await contactsApi.deleteContact(data);
         }  catch(error) {
             console.log(error);
         }
