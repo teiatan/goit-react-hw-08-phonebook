@@ -3,7 +3,6 @@ import * as contactsApi from '../../service/mockapi';
 
 export const fetchContacts = () => async dispatch => {
     dispatch(contactsActions.fetchContactsRequest());
-    console.log('works');
     try {
         const contacts = await contactsApi.fetchContacts();
         
@@ -11,4 +10,6 @@ export const fetchContacts = () => async dispatch => {
     } catch (error) {
         dispatch(contactsActions.fetchContactsError(error));
     }
-}
+};
+
+//export const addContact = () => async dispatch
