@@ -7,8 +7,6 @@ export function ContactList() {
 
     const contacts = useSelector(shownContacts);
 
-
-
     return (
         <ContactListEl>
             {contacts.map((contact) => {

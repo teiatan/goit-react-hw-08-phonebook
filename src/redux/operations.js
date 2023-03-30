@@ -1,6 +1,5 @@
-import * as contactsApi from 'service/mockapi';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import * as contactsApi from 'service/mockapi';
 
 export const fetchContacts = createAsyncThunk(
     'contacts/fetchContacts',

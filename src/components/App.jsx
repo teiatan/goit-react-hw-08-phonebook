@@ -1,18 +1,21 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
 import { Section } from "./Section/section";
 import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from "./Filter/Filter";
 import { ContactList } from "./ContactList/ContactList";
 import { Container } from "./App.styled";
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { useEffect } from 'react';
+import { Loader } from "./Loader/Loader";
+
+
 
 export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(()=> {
     dispatch(fetchContacts());
-}, [dispatch]);
+  }, [dispatch]);
 
   return (
     <>
@@ -26,6 +29,8 @@ export const App = () => {
           <ContactList />
         </Container>
       </Section>
+
+      <Loader />
     </>
   );
 };
