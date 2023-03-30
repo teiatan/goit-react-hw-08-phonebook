@@ -36,13 +36,12 @@ export const contacts = createSlice({
         [addContact.fulfilled]: (state, action) => {
             state.items.push(action.payload);
             onFulfilled(state);
-            state.smth = 'yes';
         },
         [addContact.rejected]: onRejected,
 
         [deleteContact.pending]: onPending,
         [deleteContact.fulfilled]: (state, action) => {
-            state.items.filter(contact => contact.id !== action.payload);
+            state.items = state.items.filter(contact => contact.id !== action.payload);
             onFulfilled(state);
         },
         [deleteContact.rejected]: onRejected,
