@@ -16,9 +16,9 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
     'contacts/addContact',
-    async (data) => {
+    async (contactData) => {
         try {
-            const contacts = await contactsApi.addContact(data);
+            const contacts = await contactsApi.addContact(contactData);
             return contacts;  
         }  catch(error) {
             console.log(error);
@@ -28,10 +28,10 @@ export const addContact = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
     'contacts/deleteContact',
-    async (data) => {
+    async (contactId) => {
         try {
-            await contactsApi.deleteContact(data);
-            return data; 
+            await contactsApi.deleteContact(contactId);
+            return contactId; 
         }  catch(error) {
             console.log(error);
         }
