@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
+import { isLoadingSelector } from 'redux/selectors';
 import { Section } from "./Section/section";
 import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from "./Filter/Filter";
@@ -12,6 +13,7 @@ import { Loader } from "./Loader/Loader";
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(isLoadingSelector);
 
   useEffect(()=> {
     dispatch(fetchContacts());
@@ -30,7 +32,7 @@ export const App = () => {
         </Container>
       </Section>
 
-      <Loader />
+      {isLoading && <Loader />}
     </>
   );
 };
