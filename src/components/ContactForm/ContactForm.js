@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Notify } from "notiflix";
 import { addContact } from "redux/operations";
+
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
 export function ContactForm() {

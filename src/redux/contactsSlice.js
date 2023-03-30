@@ -36,6 +36,7 @@ export const contacts = createSlice({
         [addContact.fulfilled]: (state, action) => {
             state.items.push(action.payload);
             onFulfilled(state);
+            state.smth = 'yes';
         },
         [addContact.rejected]: onRejected,
 
