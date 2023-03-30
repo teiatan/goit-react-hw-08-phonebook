@@ -3,14 +3,12 @@ import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from "./Filter/Filter";
 import { ContactList } from "./ContactList/ContactList";
 import { Container } from "./App.styled";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
-  console.log(contacts);
 
   useEffect(()=> {
     dispatch(fetchContacts());

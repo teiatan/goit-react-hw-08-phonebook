@@ -32,7 +32,6 @@ export const contacts = createSlice({
         },
         [fetchContacts.rejected]: onRejected,
 
-
         [addContact.pending]: onPending,
         [addContact.fulfilled]: (state, action) => {
             state.items.push(action.payload);
@@ -42,12 +41,9 @@ export const contacts = createSlice({
 
         [deleteContact.pending]: onPending,
         [deleteContact.fulfilled]: (state, action) => {
-            state.items.filter(contact => contact.name !== action.payload);
+            state.items.filter(contact => contact.id !== action.payload);
             onFulfilled(state);
         },
         [deleteContact.rejected]: onRejected,
     },
 });
-
-//export const { addContact, deleteContact } = contacts.actions;
-export const contactsReducer = contacts.reducer;
