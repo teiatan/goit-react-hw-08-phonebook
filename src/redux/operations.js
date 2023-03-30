@@ -1,3 +1,4 @@
+import { Notify } from "notiflix";
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as contactsApi from 'service/mockapi';
 
@@ -18,6 +19,7 @@ export const addContact = createAsyncThunk(
     async (contactData) => {
         try {
             const contacts = await contactsApi.addContact(contactData);
+            Notify.success(`${contactData.name} is successfully added to your contact list`);
             return contacts;  
         }  catch(error) {
             console.log(error);

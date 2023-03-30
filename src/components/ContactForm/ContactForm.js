@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Notify } from "notiflix";
 import { addContact } from "redux/operations";
 import { contactsSelector } from "redux/selectors";
 import { Form, Label, Input, Button } from './ContactForm.styled';
@@ -38,7 +37,6 @@ export function ContactForm() {
         };
         dispatch(addContact({name, number}));
         resetForm();
-        Notify.success(`${name} is successfully added to your contact list`);
     };
 
     const resetForm = () => {
