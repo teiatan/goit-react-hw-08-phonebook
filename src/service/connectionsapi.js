@@ -26,17 +26,19 @@ export async function updateContact(contactId) {
 
 //operations with users
 
-export async function signUp({name, number}) {
-    const data = await axios.post('/users/signup', { name, number });
+export async function signUp(credentials) {
+    console.log(credentials);
+    const data = await axios.post('/users/signup', credentials);
+    console.log(data);
     return data;
 };
 
-export async function logIn({name, number}) {
+export async function signIn({name, number}) {
     const data = await axios.post('/users/login', { name, number });
     return data;
 };
 
-export async function logOut({name, number}) {
+export async function signOut({name, number}) {
     const data = await axios.post('/users/logout', { name, number });
     return data;
 };

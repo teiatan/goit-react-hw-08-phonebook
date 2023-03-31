@@ -3,12 +3,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'service/connectionsapi';
 
 export const signUp = createAsyncThunk(
-    'users/signUp',
+    'auth/signUp',
     async (data) => {
         try {
-            const contacts = await api.signUp();
+            const response = await api.signUp(data);
             Notify.success(`{data.name}, cogratulation! Now are signed up.`);
-            return contacts; 
+            console.log(response);
+            return response; 
         }  catch(error) {
             console.log(error);
         }
@@ -16,7 +17,7 @@ export const signUp = createAsyncThunk(
 );
 
 export const signIn = createAsyncThunk(
-    'users/signIn',
+    'auth/signIn',
     async (data) => {
         try {
             const contacts = await api.signIn(data);
@@ -29,7 +30,7 @@ export const signIn = createAsyncThunk(
 );
 
 export const signOut = createAsyncThunk(
-    'users/signOut',
+    'auth/signOut',
     async (data) => {
         try {
             await api.signOut(data.id);
@@ -42,7 +43,7 @@ export const signOut = createAsyncThunk(
 );
 
 export const getUserInfo = createAsyncThunk(
-    'users/getUserInfo',
+    'auth/getUserInfo',
     async (data) => {
         try {
             await api.getUserInfo(data.id);

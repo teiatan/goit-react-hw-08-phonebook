@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signUp } from "redux/authOperations";
 import { Section } from "components/Section/section";
 import { Form, Label, Input, Button } from 'components/ContactForm/ContactForm.styled';
 
@@ -9,6 +11,7 @@ export function Register() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+    const dispatch = useDispatch();
 
     const handleInputChange = e => {
         const { name, value } = e.currentTarget;
@@ -35,7 +38,8 @@ export function Register() {
         if(password !== confirmPassword) {
             alert("Password confiramation has an error");
             return;
-        }
+        };
+        dispatch(signUp({ name, email, password}));
         resetForm();
     };
 
