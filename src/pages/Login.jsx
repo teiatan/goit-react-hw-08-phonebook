@@ -24,15 +24,6 @@ export function Login() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        /* const existingContact = contacts.find((element) =>
-            element.name === name
-        );
-        if(existingContact) {
-        window.alert(`${name} is already in contacts`);
-        return;
-        };
-        dispatch(addContact({name, number}));
-         */
         resetForm();
     };
 
