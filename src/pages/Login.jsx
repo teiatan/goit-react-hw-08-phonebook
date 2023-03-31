@@ -33,7 +33,7 @@ export function Login() {
     };
 
     return (
-        <Section title="Log in">
+        <Section title="Authorization">
             <Form onSubmit={handleSubmit}>
                 <Label>
                     Login
