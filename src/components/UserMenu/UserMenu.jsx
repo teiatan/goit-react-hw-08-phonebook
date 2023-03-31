@@ -1,11 +1,13 @@
+import { Div, Ul, MobileButton, Button } from "./UserMenu.styled"
+
 export function UserMenu() {
     return (
-        <div>
-            <button>mobile button</button>
-            <ul>
+        <Div>
+            <MobileButton>mobile button</MobileButton>
+            <Ul>
                 <p>e-mail</p>
-                <button>sign out</button>
-            </ul>
-        </div>
+                <Button>sign out</Button>
+            </Ul>
+        </Div>
     )
 }

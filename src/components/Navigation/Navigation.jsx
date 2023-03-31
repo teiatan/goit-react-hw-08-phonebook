@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom"
+import { NavTag, StyledNavLink, Ul } from "./Navigation.styled"
 
 export function Navigation() {
     return(
-        <nav>
-            <ul>
-                <li><Link to="/contacts">contacts</Link></li>
-                <li><Link to="/login">login</Link></li>
-                <li><Link to="/register">register</Link></li>
-            </ul>
-        </nav>
+        <NavTag>
+            <Ul>
+                <li><StyledNavLink to="/contacts">contacts</StyledNavLink></li>
+                <li><StyledNavLink to="/login">login</StyledNavLink></li>
+                <li><StyledNavLink to="/register">register</StyledNavLink></li>
+            </Ul>
+        </NavTag>
     )
 };

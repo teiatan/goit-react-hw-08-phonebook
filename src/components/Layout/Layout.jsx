@@ -3,15 +3,16 @@ import { Outlet } from "react-router-dom"
 import { Navigation } from "components/Navigation/Navigation"
 import { Loader } from "components/Loader/Loader"
 import { UserMenu } from "components/UserMenu/UserMenu"
+import { Header } from "components/Header/Header"
 
 export function Layout({children}) {
 
     return (
         <>
-            <header>
+            <Header>
                 <Navigation /> 
                 <UserMenu />
-            </header>
+            </Header>
             <main>
                 <Suspense fallback={<Loader />}>
                     <Outlet />
