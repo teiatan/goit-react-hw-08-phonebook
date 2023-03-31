@@ -4,7 +4,8 @@ import { Form, Label, Input, Button } from 'components/ContactForm/ContactForm.s
 
 export function Register() {
 
-    const [login, setLogin] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -12,8 +13,11 @@ export function Register() {
     const handleInputChange = e => {
         const { name, value } = e.currentTarget;
         switch (name) {
-            case "login":
-                setLogin(value);
+            case "name":
+                setName(value);
+                break;
+            case "email":
+                setEmail(value);
                 break;
             case "password":
                 setPassword(value);
@@ -36,7 +40,8 @@ export function Register() {
     };
 
     const resetForm = () => {
-        setLogin("");
+        setName("");
+        setEmail("");
         setPassword("");
         setConfirmPassword("");
     };
@@ -45,12 +50,23 @@ export function Register() {
         <Section title="Registration">
             <Form onSubmit={handleSubmit}>
                 <Label>
-                    Login
+                    Name
                     <Input
                         type="text"
-                        name="login"
+                        name="name"
                         required
-                        value={login}
+                        value={name}
+                        onChange={handleInputChange}
+                    />
+                </Label>
+
+                <Label>
+                    Email
+                    <Input
+                        type="mail"
+                        name="email"
+                        required
+                        value={email}
                         onChange={handleInputChange}
                     />
                 </Label>

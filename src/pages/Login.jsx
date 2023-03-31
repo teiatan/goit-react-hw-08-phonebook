@@ -4,15 +4,15 @@ import { Form, Label, Input, Button } from 'components/ContactForm/ContactForm.s
 
 export function Login() {
 
-    const [login, setLogin] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
 
     const handleInputChange = e => {
         const { name, value } = e.currentTarget;
         switch (name) {
-            case "login":
-                setLogin(value);
+            case "email":
+                setEmail(value);
                 break;
             case "password":
                 setPassword(value);
@@ -28,7 +28,7 @@ export function Login() {
     };
 
     const resetForm = () => {
-        setLogin("");
+        setEmail("");
         setPassword("");
     };
 
@@ -36,12 +36,12 @@ export function Login() {
         <Section title="Authorization">
             <Form onSubmit={handleSubmit}>
                 <Label>
-                    Login
+                    Email
                     <Input
-                        type="text"
-                        name="login"
+                        type="mail"
+                        name="email"
                         required
-                        value={login}
+                        value={email}
                         onChange={handleInputChange}
                     />
                 </Label>
