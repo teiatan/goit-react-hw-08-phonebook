@@ -7,12 +7,12 @@ export const NavTag = styled.nav`
 
 export const StyledNavLink = styled(NavLink)`
     text-decoration: none;
-    color:inherit;
+    color: black;
     font-weight: 600;
     font-size: 20px;
     text-transform: uppercase;
     &.active {
-        color: black;
+        color: white;
     }
 `;
 

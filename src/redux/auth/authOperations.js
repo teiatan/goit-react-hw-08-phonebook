@@ -22,6 +22,7 @@ export const signIn = createAsyncThunk(
         try {
             const response = await api.signIn(data);
             Notify.success(`${response.user.name}, welcome back to your phonebook`);
+            
             return response;  
         }  catch(error) {
             console.log(error);
