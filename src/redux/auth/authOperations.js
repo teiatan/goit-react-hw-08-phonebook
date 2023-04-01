@@ -33,9 +33,9 @@ export const signOut = createAsyncThunk(
     'auth/signOut',
     async (data) => {
         try {
-            await api.signOut(data.id);
+            await api.signOut(data);
             Notify.failure(`{data.name}, you are signed out. See you soon.`);
-            return data.id; 
+            return data; 
         }  catch(error) {
             console.log(error);
         }
@@ -46,8 +46,8 @@ export const getUserInfo = createAsyncThunk(
     'auth/getUserInfo',
     async (data) => {
         try {
-            await api.getUserInfo(data.id);
-            return data.id; 
+            await api.getUserInfo(data);
+            return data; 
         }  catch(error) {
             console.log(error);
         }
