@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { signUp, signIn, signOut } from "./authOperations";
 
-const onPending = state => {
+/* const onPending = state => {
     state.user = { name: null, email: null };
     state.token = null;
     state.isLoggedIn = false;
@@ -22,7 +22,7 @@ const onRejected = (state, action) => {
     state.token = null;
     state.isLoggedIn = false;
     state.isRefreshing = false;
-};
+}; */
 
 export const auth = createSlice({
     name: 'auth',
@@ -38,7 +38,6 @@ export const auth = createSlice({
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
-            state.isRefreshing = false;
         },
         [signUp.rejected]: (state) => state,
 
@@ -47,16 +46,14 @@ export const auth = createSlice({
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
-            state.isRefreshing = false;
         },
         [signIn.rejected]: (state) => state,
 
         [signOut.pending]: (state) => state,
-        [signOut.fulfilled]: (state, action) => {
+        [signOut.fulfilled]: (state) => {
             state.user = { name: null, email: null };
             state.token = null;
             state.isLoggedIn = false;
-            state.isRefreshing = false;
         },
         [signOut.rejected]: (state) => state,
     },

@@ -13,7 +13,6 @@ export const App = () => {
 
   const navigate = useNavigate();
   const isLoggedIn = useSelector(isLoggedInSelector);
-  //navigate("/contacts", { replace: true });
 
   useEffect(()=>{
     if(isLoggedIn) {
