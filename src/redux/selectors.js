@@ -6,6 +6,7 @@ export const filterSelector = state => state.filter;
 //auth
 export const tokenSelector = state => state.auth.token;
 export const isLoggedInSelector = state => state.auth.isLoggedIn;
+export const emailSelector = state => state.auth.user.email;
 
 
 //contacts
