@@ -44,12 +44,19 @@ export const signOut = createAsyncThunk(
 
 export const getUserInfo = createAsyncThunk(
     'auth/getUserInfo',
-    async (data) => {
-        try {
-            await api.getUserInfo(data);
-            return data; 
-        }  catch(error) {
-            console.log(error);
-        }
+    async (_, thunkAPI) => {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+  
+      if (persistedToken === null) {
+        return console.log('Unable to fetch user');
+      }
+  
+      try {
+        const response = await api.getUserInfo(persistedToken);
+        return response;
+      } catch (error) {
+        return console.log(error);
+      }
     }
-);
+  );

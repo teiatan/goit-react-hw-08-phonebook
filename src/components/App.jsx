@@ -6,20 +6,26 @@ import { Register } from 'pages/Register';
 import { NotFound } from 'pages/NotFound';
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { isLoggedInSelector } from 'redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { emailSelector, isLoggedInSelector, tokenSelector } from 'redux/selectors';
+import { getUserInfo} from 'redux/auth/authOperations';
 
 export const App = () => {
-
   const navigate = useNavigate();
   const isLoggedIn = useSelector(isLoggedInSelector);
+  const dispatch = useDispatch();
+  //const email = useSelector(emailSelector);
+  //const token = useSelector(tokenSelector);
+  
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
 
   useEffect(()=>{
     if(isLoggedIn) {
       navigate("/contacts", { replace: true });
       return;
     };
-    //navigate("/login", { replace: true });
   },[isLoggedIn, navigate]);
   
   return (

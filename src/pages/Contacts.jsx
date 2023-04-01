@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { isLoadingSelector, isLoggedInSelector } from 'redux/selectors';
+import { fetchContacts } from 'redux/contactsOperations';
+import { isLoadingSelector, isLoggedInSelector, isRefreshingSelector } from 'redux/selectors';
 import { Section } from "components/Section/section";
 import { ContactForm } from "components/ContactForm/ContactForm";
 import { Filter } from "components/Filter/Filter";
@@ -17,10 +17,13 @@ export const Contacts = () => {
   const navigate = useNavigate();
   const isLoading = useSelector(isLoadingSelector);
   const isLoggedIn = useSelector(isLoggedInSelector);
+  const isRefreshing = useSelector(isRefreshingSelector);
 
-  /* useEffect(()=> {
-    dispatch(fetchContacts());
-  }, [dispatch]); */
+  useEffect(()=> {
+    if(!isRefreshing){
+      dispatch(fetchContacts());
+    }
+  }, [dispatch, isRefreshing]);
 
   useEffect(()=> {
     if(!isLoggedIn) {
@@ -30,8 +33,8 @@ export const Contacts = () => {
 
   return (
     <>
-      {/* {isLoggedIn &&
-      <> */}
+      {isLoggedIn && !isRefreshing &&
+      <>
         <Section title="Phonebook">
           <ContactForm/>
         </Section>
@@ -42,8 +45,8 @@ export const Contacts = () => {
             <ContactList />
           </Container>
         </Section>
-      {/* </>
-      } */}
+      </>
+      }
       {isLoading && <Loader />}
     </>
   );
