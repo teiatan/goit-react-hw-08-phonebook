@@ -32,11 +32,10 @@ export const signIn = createAsyncThunk(
 
 export const signOut = createAsyncThunk(
     'auth/signOut',
-    async (data) => {
+    async () => {
         try {
-            await api.signOut(data);
-            Notify.failure(`{data.name}, you are signed out. See you soon.`);
-            return data; 
+            await api.signOut();
+            Notify.failure(`You are signed out. See you soon.`);
         }  catch(error) {
             console.log(error);
         }
