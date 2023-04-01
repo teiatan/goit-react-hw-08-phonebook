@@ -31,8 +31,8 @@ export async function signUp(credentials) {
     return data;
 };
 
-export async function signIn({name, number}) {
-    const data = await axios.post('/users/login', { name, number });
+export async function signIn(credentials) {
+    const { data } = await axios.post('/users/login', credentials);
     return data;
 };
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signUp } from "redux/authOperations";
+import { signUp } from "redux/auth/authOperations";
 import { Section } from "components/Section/section";
 import { Form, Label, Input, Button } from 'components/ContactForm/ContactForm.styled';
 

@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Section } from "components/Section/section";
+import { signIn } from "redux/auth/authOperations";
 import { Form, Label, Input, Button } from 'components/ContactForm/ContactForm.styled';
 
 export function Login() {
@@ -7,6 +9,7 @@ export function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const dispatch = useDispatch();
 
     const handleInputChange = e => {
         const { name, value } = e.currentTarget;
@@ -24,6 +27,7 @@ export function Login() {
 
     const handleSubmit = e => {
         e.preventDefault();
+        dispatch(signIn({ email, password}));
         resetForm();
     };
 

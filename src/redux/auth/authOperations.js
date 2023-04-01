@@ -7,7 +7,7 @@ export const signUp = createAsyncThunk(
     async (data) => {
         try {
             const response = await api.signUp(data);
-            Notify.success(`{data.name}, cogratulation! Now are signed up.`);
+            Notify.success(`${response.user.name}, cogratulation! Now are signed up.`);
             console.log(response);
             return response; 
         }  catch(error) {
@@ -20,9 +20,9 @@ export const signIn = createAsyncThunk(
     'auth/signIn',
     async (data) => {
         try {
-            const contacts = await api.signIn(data);
-            Notify.success(`{data.name}, welcome back to your phonebook`);
-            return contacts;  
+            const response = await api.signIn(data);
+            Notify.success(`${response.user.name}, welcome back to your phonebook`);
+            return response;  
         }  catch(error) {
             console.log(error);
         }

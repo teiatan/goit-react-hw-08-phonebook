@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { signUp } from "./authOperations";
+import { signUp, signIn } from "./authOperations";
 
 const onPending = state => {
     state.user = { name: null, email: null };
@@ -41,6 +41,15 @@ export const auth = createSlice({
             state.isRefreshing = false;
         },
         [signUp.rejected]: (state) => state,
+
+        [signIn.pending]: (state) => state,
+        [signIn.fulfilled]: (state, action) => {
+            state.user = action.payload.user;
+            state.token = action.payload.token;
+            state.isLoggedIn = true;
+            state.isRefreshing = false;
+        },
+        [signIn.rejected]: (state) => state,
     },
 });
 
