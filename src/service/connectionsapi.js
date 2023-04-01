@@ -27,9 +27,7 @@ export async function updateContact(contactId) {
 //operations with users
 
 export async function signUp(credentials) {
-    console.log(credentials);
-    const data = await axios.post('/users/signup', credentials);
-    console.log(data);
+    const { data } = await axios.post('/users/signup', credentials);
     return data;
 };
 
