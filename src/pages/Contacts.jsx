@@ -25,11 +25,11 @@ export const Contacts = () => {
     }
   }, [dispatch, isRefreshing]);
 
-  useEffect(()=> {
+  /* useEffect(()=> {
     if(!isLoggedIn) {
       navigate('/', {replace: true});
     };
-  })
+  }) */
 
   return (
     <>
