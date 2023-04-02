@@ -5,16 +5,16 @@ import { Login } from 'pages/Login';
 import { Register } from 'pages/Register';
 import { NotFound } from 'pages/NotFound';
 import { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { isLoggedInSelector, isRefreshingSelector } from 'redux/selectors';
+import { isRefreshingSelector } from 'redux/selectors';
 import { getUserInfo} from 'redux/auth/authOperations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
 export const App = () => {
-  const navigate = useNavigate();
-  const isLoggedIn = useSelector(isLoggedInSelector);
+  //const navigate = useNavigate();
+  //const isLoggedIn = useSelector(isLoggedInSelector);
   const isRefreshing = useSelector(isRefreshingSelector);
   const dispatch = useDispatch();
   

@@ -8,13 +8,13 @@ import { Filter } from "components/Filter/Filter";
 import { ContactList } from "components/ContactList/ContactList";
 import { Container } from "components/App.styled";
 import { Loader } from "components/Loader/Loader";
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 
 
 export const Contacts = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const isLoading = useSelector(isLoadingSelector);
   const isLoggedIn = useSelector(isLoggedInSelector);
   const isRefreshing = useSelector(isRefreshingSelector);

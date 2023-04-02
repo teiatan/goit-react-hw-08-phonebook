@@ -47,6 +47,7 @@ export const getUserInfo = createAsyncThunk(
     async (_, thunkAPI) => {
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
+      console.log(state);
   
       if (persistedToken === null) {
         return console.log('Unable to fetch user');
@@ -54,9 +55,10 @@ export const getUserInfo = createAsyncThunk(
   
       try {
         const response = await api.getUserInfo(persistedToken);
+        console.log(response);
         return response;
       } catch (error) {
-        return console.log(error);
+        return console.log(state);
       }
     }
   );
