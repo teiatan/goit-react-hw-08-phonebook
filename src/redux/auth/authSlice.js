@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signUp, signIn, signOut, getUserInfo } from "./authOperations";
+import { signUp, signIn, signOut, getUserInfo, refreshUser } from "./authOperations";
 
 /* const onPending = state => {
     state.user = { name: null, email: null };
@@ -55,6 +55,30 @@ export const auth = createSlice({
             state.user = action.payload;
             state.isLoggedIn = true;
         },
-        [getUserInfo.rejected]: (state) => state.isRefreshing = false,
+        [getUserInfo.rejected]: (state, action) => {state.isRefreshing = false;
+         
+        state.ttttt = action;
+
+        },
+
+        /* [refreshUser.pending]: (state) => state.isRefreshing = true,
+        [refreshUser.fulfilled]: (state, action) => {
+            state.isRefreshing = false;
+            state.user = action.payload;
+        },
+        [refreshUser.rejected]: (state) => state.isRefreshing = false, */
+
+        [refreshUser.pending]: (state) => {
+            state.isRefreshing = true;
+        },
+        [refreshUser.fulfilled]: (state, action) => {
+            state.isRefreshing = false;
+            state.isLoggedIn = true;
+            state.user = action.payload;
+        },
+        [refreshUser.rejected]: (state) => {
+            state.isRefreshing = false;
+        },
+       
     },
 });

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
-export const setAuthHeader = token => {
+const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -53,6 +53,12 @@ export async function signOut() {
 
 export async function getUserInfo(token) {
     setAuthHeader(token);
-    const { data } = await axios.get('​/users​/current');
+    const { data } = await axios.get('/users/current');
+    return data;
+};
+
+export async function refreshUser(token) {
+    setAuthHeader(token);
+    const { data } = await axios.get('/users/current');
     return data;
 };

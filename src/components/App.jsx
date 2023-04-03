@@ -7,8 +7,8 @@ import { NotFound } from 'pages/NotFound';
 import { useEffect } from 'react';
 //import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { isRefreshingSelector } from 'redux/selectors';
-import { getUserInfo} from 'redux/auth/authOperations';
+import { isRefreshingSelector, tokenSelector } from 'redux/selectors';
+import { getUserInfo, refreshUser} from 'redux/auth/authOperations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -17,10 +17,15 @@ export const App = () => {
   //const isLoggedIn = useSelector(isLoggedInSelector);
   const isRefreshing = useSelector(isRefreshingSelector);
   const dispatch = useDispatch();
+  const persistedToken = useSelector(tokenSelector);
   
-  useEffect(() => {
-    dispatch(getUserInfo());
-  }, [dispatch]);
+ /*  useEffect(() => {
+    dispatch(getUserInfo(persistedToken));
+  }, [dispatch, persistedToken]); */
+
+  useEffect(()=>{
+    dispatch(refreshUser(persistedToken))
+  }, [dispatch, persistedToken]);
 
  /*  useEffect(()=>{
     if(isLoggedIn) {
