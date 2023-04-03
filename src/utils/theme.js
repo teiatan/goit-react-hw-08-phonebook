@@ -1,9 +1,3 @@
-//import { useContext } from "react";
-import { Context } from "./context";
-
-//кольори використовуємо в styled файлах:
-//background-color: ${props => (props.theme.footer.backgroundColor)};
-
 class Theme {
     constructor({header, main, footer}) {
 
@@ -38,10 +32,8 @@ export const dark = new Theme({
     }
 });
 
-//функціонал перемикання теми через контекст
 
-let theme = 'ligth';
-export function themeChanging() {
+export function themeChanging(theme) {
     switch (theme) {
         case "light":
             theme="dark";
@@ -49,18 +41,7 @@ export function themeChanging() {
         case "dark":
             theme="light"
             break;
-        default:
-            
+        default:     
     }
-}
-
-const value = 'light';
-
-export function ContextProvider ({children}) {
-    return (
-        <Context.Provider value={value}>
-            {children}
-        </Context.Provider>
-    )
 };
 

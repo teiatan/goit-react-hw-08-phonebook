@@ -1,26 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signUp, signIn, signOut, getUserInfo, refreshUser } from "./authOperations";
-
-/* const onPending = state => {
-    state.user = { name: null, email: null };
-    state.token = null;
-    state.isLoggedIn = false;
-    state.isRefreshing = false;
-};
-
-const onFulfilled = state => {
-    state.user = { name: null, email: null };
-    state.token = null;
-    state.isLoggedIn = false;
-    state.isRefreshing = false;
-};
-
-const onRejected = (state, action) => {
-    state.user = { name: null, email: null };
-    state.token = null;
-    state.isLoggedIn = false;
-    state.isRefreshing = false;
-}; */
+import { signUp, signIn, signOut, refreshUser } from "./authOperations";
 
 export const auth = createSlice({
     name: 'auth',
@@ -48,33 +27,16 @@ export const auth = createSlice({
             state.token = null;
             state.isLoggedIn = false;
         },
-        
-        [getUserInfo.pending]: (state) => state.isRefreshing = true,
-        [getUserInfo.fulfilled]: (state, action) => {
-            state.isRefreshing = false;
-            state.user = action.payload;
-            state.isLoggedIn = true;
-        },
-        [getUserInfo.rejected]: (state, action) => {state.isRefreshing = false;
-         
-        state.ttttt = action;
-
-        },
-
-        /* [refreshUser.pending]: (state) => state.isRefreshing = true,
-        [refreshUser.fulfilled]: (state, action) => {
-            state.isRefreshing = false;
-            state.user = action.payload;
-        },
-        [refreshUser.rejected]: (state) => state.isRefreshing = false, */
 
         [refreshUser.pending]: (state) => {
             state.isRefreshing = true;
         },
         [refreshUser.fulfilled]: (state, action) => {
             state.isRefreshing = false;
-            state.isLoggedIn = true;
             state.user = action.payload;
+            if(state.token !== null) {
+                state.isLoggedIn = true;
+            };
         },
         [refreshUser.rejected]: (state) => {
             state.isRefreshing = false;

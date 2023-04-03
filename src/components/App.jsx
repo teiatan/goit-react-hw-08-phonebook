@@ -1,38 +1,24 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { Contacts } from 'pages/Contacts';
-import { Layout } from './Layout/Layout';
 import { Login } from 'pages/Login';
 import { Register } from 'pages/Register';
 import { NotFound } from 'pages/NotFound';
-import { useEffect } from 'react';
-//import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
 import { isRefreshingSelector, tokenSelector } from 'redux/selectors';
-import { getUserInfo, refreshUser} from 'redux/auth/authOperations';
+import { refreshUser} from 'redux/auth/authOperations';
+import { Layout } from './Layout/Layout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
 export const App = () => {
-  //const navigate = useNavigate();
-  //const isLoggedIn = useSelector(isLoggedInSelector);
-  const isRefreshing = useSelector(isRefreshingSelector);
   const dispatch = useDispatch();
-  const persistedToken = useSelector(tokenSelector);
-  
- /*  useEffect(() => {
-    dispatch(getUserInfo(persistedToken));
-  }, [dispatch, persistedToken]); */
+  const isRefreshing = useSelector(isRefreshingSelector);
+  const token = useSelector(tokenSelector);
 
   useEffect(()=>{
-    dispatch(refreshUser(persistedToken))
-  }, [dispatch, persistedToken]);
-
- /*  useEffect(()=>{
-    if(isLoggedIn) {
-      navigate("/contacts", { replace: true });
-      return;
-    };
-  },[isLoggedIn, navigate]); */
+    dispatch(refreshUser(token))
+  }, [dispatch, token]);
   
   return isRefreshing ? (
     <b>Refreshing user...</b>

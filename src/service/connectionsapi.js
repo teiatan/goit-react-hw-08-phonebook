@@ -51,12 +51,6 @@ export async function signOut() {
     clearAuthHeader();
 };
 
-export async function getUserInfo(token) {
-    setAuthHeader(token);
-    const { data } = await axios.get('/users/current');
-    return data;
-};
-
 export async function refreshUser(token) {
     setAuthHeader(token);
     const { data } = await axios.get('/users/current');
